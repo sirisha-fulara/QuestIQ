@@ -1,7 +1,7 @@
 import os
 
 class Config:
-    SECRET_KEY= 'ad7419ac023b98c15824f9014af97e1e'
-    SQLALCHEMY_DATABASE_URI= 'postgresql://postgres:siripostgres@localhost:5432/quizdb'
+    SECRET_KEY= os.environ.get("SECRET_KEY")
+    SQLALCHEMY_DATABASE_URI= os.environ.get("SQLALCHEMY_DATABASE_URI")
     SQLALCHEMY_TRACK_MODIFICATIONS= False
-    JWT_SECRET_KEY= 'aaa1315800ddafa394648ba34a53f199'
+    JWT_SECRET_KEY= os.environ.get('JWT_SECRET_KEY')
