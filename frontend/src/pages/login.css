@@ -1,0 +1,147 @@
+/* Page background */
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f4f8;
+}
+
+/* Main card */
+.login-card {
+  width: 900px;
+  height: 480px;
+  display: flex;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+
+/* LEFT SIDE */
+.login-left {
+  flex: 1;
+  position: relative;
+  padding: 60px;
+  color: white;
+
+  background: linear-gradient(
+    135deg,
+    #342668,
+    #4b3f91
+  );
+}
+
+.login-left h1 {
+  font-size: 14px;
+  letter-spacing: 2px;
+  opacity: 0.85;
+}
+
+.login-left h2 {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.login-left p {
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Decorative circles */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.circle.big {
+  width: 260px;
+  height: 260px;
+  bottom: -80px;
+  left: -80px;
+}
+
+.circle.small {
+  width: 120px;
+  height: 120px;
+  top: 40px;
+  right: -40px;
+}
+
+/* RIGHT SIDE */
+.login-right {
+  flex: 1;
+  background: white;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-right h2 {
+  font-size: 28px;
+  color: #342668;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.login-right input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.login-right input:focus {
+  border-color: #342668;
+  outline: none;
+}
+
+.login-right button {
+  width: 100%;
+  padding: 12px;
+  background: #342668;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.login-right button:hover {
+  background: #2b2056;
+}
+
+.register-text {
+  margin-top: 20px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.register-text span {
+  color: #342668;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-card {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .login-left {
+    display: none;
+  }
+}

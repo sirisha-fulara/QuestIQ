@@ -1,0 +1,141 @@
+.quiz-page {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1b1335, #0b0818);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  color: #fff;
+}
+
+.quiz-header {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #cfc7ff;
+}
+
+.progress-bar {
+  width: 100%;
+  max-width: 700px;
+  height: 10px;
+  background: #2a234f;
+  border-radius: 10px;
+  margin: 12px 0 24px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #c77dff, #9d4edd);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.quiz-card {
+  width: 100%;
+  max-width: 700px;
+  background: #120d26;
+  padding: 28px;
+  border-radius: 22px;
+  box-shadow: 0 0 40px rgba(199, 125, 255, 0.25);
+}
+
+.question-text {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.option {
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(199, 125, 255, 0.12);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.option:hover {
+  background: rgba(199, 125, 255, 0.25);
+  transform: scale(1.02);
+}
+
+.option.selected {
+  border: 2px solid #c77dff;
+}
+
+.option.correct {
+  background: rgba(0, 200, 83, 0.25);
+  box-shadow: 0 0 15px rgba(0, 200, 83, 0.6);
+}
+
+.option.wrong {
+  background: rgba(255, 82, 82, 0.25);
+}
+
+.next-btn {
+  margin-top: 24px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #c77dff, #9d4edd);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.next-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quiz-end {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1b1335, #0b0818);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.final-score {
+  margin: 16px 0 26px;
+  font-size: 18px;
+  color: #e9ddff;
+}
+
+.end-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.end-btn {
+  padding: 14px 22px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.end-btn.primary {
+  background: linear-gradient(135deg, #c77dff, #9d4edd);
+  color: white;
+}
+
+.end-btn.secondary {
+  background: rgba(199, 125, 255, 0.15);
+  color: #e9ddff;
+}
+
+.end-btn:hover {
+  transform: translateY(-3px);
+}
