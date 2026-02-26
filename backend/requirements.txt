@@ -9,3 +9,4 @@ python-engineio==4.9.1
 eventlet==0.33.3
 psycopg2-binary==2.9.11
 gunicorn==21.2.0
+requests
