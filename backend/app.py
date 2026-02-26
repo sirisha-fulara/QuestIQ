@@ -16,7 +16,7 @@ from sockets.quiz_socket import *
 port = int(os.environ.get("PORT", 5000))
 
 socketio= SocketIO(cors_allowed_origins="*",
-                   async_mode="eventlet")
+                   async_mode="threading")
 
 def create_app():
     app= Flask(__name__)
