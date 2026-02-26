@@ -12,7 +12,9 @@ API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 HEADERS = {
     "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "HTTP-Referer": "https://quiz-backend-0mpn.onrender.com",  # can be frontend too
+    "X-Title": "Questiq AI Quiz Generator"
 }
 
 MODEL = "stepfun/step-3.5-flash:free"
