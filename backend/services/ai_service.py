@@ -16,9 +16,6 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
-MODEL = "llama-3.1-70b-versatile"  # Free + stable
-
-
 def generate_quiz_questions(topic, difficulty):
     prompt = (
         "Generate 10 multiple choice questions.\n"
@@ -33,7 +30,7 @@ def generate_quiz_questions(topic, difficulty):
     )
 
     payload = {
-        "model": "llama-3.1-70b-versatile",
+        "model": "mixtral-8x7b-32768",
         "messages": [
             {"role": "user", "content": prompt}
         ],
