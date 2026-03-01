@@ -55,7 +55,8 @@ def generate_quiz_questions(topic, difficulty):
     print("🔴 GROQ BODY:", response.text)
 
     if response.status_code != 200:
-        raise Exception("Groq request failed")    
+        print("🔴 GROQ ERROR BODY:", response.text)
+        return {"error": response.text}   
 
     response.raise_for_status()
 
