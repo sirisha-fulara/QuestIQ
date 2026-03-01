@@ -46,14 +46,16 @@ def generate_quiz_questions(topic, difficulty):
         headers={
             "Authorization": f"Bearer {os.getenv('GROQ_API_KEY').strip()}",
             "Content-Type": "application/json"
-        },
+            },
         json=payload,
         timeout=30
     )
 
-    # 🔴 KEEP THIS FOR ONE RUN
-    print("GROQ STATUS:", response.status_code)
-    print("GROQ BODY:", response.text)
+    print("🔴 GROQ STATUS:", response.status_code)
+    print("🔴 GROQ BODY:", response.text)
+
+    if response.status_code != 200:
+        raise Exception("Groq request failed")    
 
     response.raise_for_status()
 
