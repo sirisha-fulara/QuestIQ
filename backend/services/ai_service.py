@@ -47,10 +47,14 @@ Format:
     payload = {
         "model": MODEL,
         "messages": [
-            {"role": "user", "content": prompt}
-            ],
+        {
+            "role": "user",
+            "content": prompt.strip()
+        }
+        ],
         "temperature": 0.7,
-        "max_tokens": 1200
+        "max_tokens": 600,      # 🔽 reduce
+        "stream": False 
     }
 
     response = requests.post(
@@ -59,7 +63,8 @@ Format:
         json=payload,
         timeout=30
     )
-
+    print("GROQ STATUS:", response.status_code)
+    print("GROQ BODY:", response.text)
     response.raise_for_status()
 
     data = response.json()
