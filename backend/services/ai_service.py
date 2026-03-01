@@ -20,22 +20,25 @@ MODEL = "llama3-8b-8192"  # Free + stable
 
 
 def generate_quiz_questions(topic, difficulty):
+    prompt = (
+        "Generate 10 multiple choice questions.\n"
+        f"Topic: {topic}\n"
+        f"Difficulty: {difficulty}\n\n"
+        "Return ONLY a JSON array.\n"
+        "Each item must have:\n"
+        "- question (string)\n"
+        "- options (object with keys A, B, C, D)\n"
+        "- correct_answer (one of A, B, C, D)\n\n"
+        "Do not include any explanation or text outside JSON."
+    )
+
     payload = {
         "model": "llama3-8b-8192",
         "messages": [
-            {
-                "role": "system",
-                "content": "You are a quiz generator. Always return valid JSON only."
-            },
-            {
-                "role": "user",
-                "content": f"Generate 10 multiple choice questions on {topic} with difficulty {difficulty}. "
-                           f"Return a JSON array with question, options A-D, and correct_answer."
-            }
+            {"role": "user", "content": prompt}
         ],
         "temperature": 0.3,
-        "max_tokens": 800,
-        "response_format": { "type": "json_object" }
+        "max_tokens": 700
     }
 
     response = requests.post(
@@ -48,10 +51,23 @@ def generate_quiz_questions(topic, difficulty):
         timeout=30
     )
 
+    # 🔴 KEEP THIS FOR ONE RUN
+    print("GROQ STATUS:", response.status_code)
+    print("GROQ BODY:", response.text)
+
     response.raise_for_status()
 
     data = response.json()
-    return json.loads(data["choices"][0]["message"]["content"])
+    content = data["choices"][0]["message"]["content"]
+
+    # Safe JSON extraction
+    start = content.find("[")
+    end = content.rfind("]") + 1
+
+    if start == -1 or end == -1:
+        raise ValueError("No JSON array found in Groq response")
+
+    return json.loads(content[start:end])
 
 #     prompt = f"""
 # Generate EXACTLY 10 multiple choice questions.
