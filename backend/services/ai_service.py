@@ -6,19 +6,17 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
-OPENROUTER_API_KEY = OPENROUTER_API_KEY.strip().replace('"', '')
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+GROQ_API_KEY = GROQ_API_KEY.strip().replace('"', '')
 
-API_URL = "https://openrouter.ai/api/v1/chat/completions"
+API_URL = "https://api.groq.com/openai/v1/chat/completions"
 
 HEADERS = {
-    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-    "Content-Type": "application/json",
-    "HTTP-Referer": "https://quiz-backend-0mpn.onrender.com",  # can be frontend too
-    "X-Title": "Questiq AI Quiz Generator"
+    "Authorization": f"Bearer {GROQ_API_KEY}",
+    "Content-Type": "application/json"
 }
 
-MODEL = "stepfun/step-3.5-flash:free"
+MODEL = "llama3-8b-8192"  # Free + stable
 
 
 def generate_quiz_questions(topic, difficulty):
@@ -50,10 +48,17 @@ Format:
         "model": MODEL,
         "messages": [
             {"role": "user", "content": prompt}
-        ]
+        ],
+        "temperature": 0.7
     }
 
-    response = requests.post(API_URL, headers=HEADERS, json=payload)
+    response = requests.post(
+        API_URL,
+        headers=HEADERS,
+        json=payload,
+        timeout=30
+    )
+
     response.raise_for_status()
 
     data = response.json()
