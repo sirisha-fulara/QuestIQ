@@ -62,11 +62,12 @@ def generate_quiz():
     #Generate questions via AI
     questions_data = generate_quiz_questions(topic, difficulty)
 
-    if isinstance(questions_data, str):
-        questions_data = json.loads(questions_data)
-
-    if isinstance(questions_data, dict):
-        questions_data = [questions_data]
+    # 🚨 STOP if AI failed
+    if not isinstance(questions_data, list):
+        return jsonify({
+            "error": "AI generation failed",
+            "details": questions_data
+        }), 503
 
     #Save questions and options
     for q in questions_data:
