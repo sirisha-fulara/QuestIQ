@@ -4,7 +4,6 @@ import json
 import re
 
 HF_API_TOKEN = os.getenv("HF_API_TOKEN", "").strip()
-print("HF TOKEN LOADED:", HF_API_TOKEN[:10] if HF_API_TOKEN else "EMPTY")
 
 API_URL = "https://router.huggingface.co/hf-inference/models/mistralai/Mistral-7B-Instruct-v0.2"
 
@@ -14,6 +13,7 @@ HEADERS = {
 }
 
 def generate_quiz_questions(topic, difficulty):
+    print("HF TOKEN LOADED:", HF_API_TOKEN[:10] if HF_API_TOKEN else "EMPTY")
     prompt = (
         f"Generate 10 multiple choice questions.\n"
         f"Topic: {topic}\n"
