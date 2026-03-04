@@ -4,7 +4,7 @@ import json
 import random
 import re
 
-HF_TOKEN = os.getenv("HF_TOKEN")
+HF_API_TOKEN = os.getenv("HF_API_TOKEN")
 
 API_URL = "https://api.aimlapi.com/v1/chat/completions"
 
@@ -50,7 +50,7 @@ Format:
 """
 
     headers = {
-        "Authorization": f"Bearer {HF_TOKEN}",
+        "Authorization": f"Bearer {HF_API_TOKEN}",
         "Content-Type": "application/json"
     }
 
