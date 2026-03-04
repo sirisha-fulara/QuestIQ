@@ -8,8 +8,10 @@ HF_API_TOKEN = os.getenv("HF_API_TOKEN")
 
 API_URL = "https://api.aimlapi.com/v1/chat/completions"
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, "../data/question_bank.json")
 # Load local question bank
-with open("backend/data/question_bank.json", "r") as f:
+with open(DATA_PATH, "r") as f:
     QUESTION_BANK = json.load(f)
 
 
